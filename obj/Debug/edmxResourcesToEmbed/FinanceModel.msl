@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище finance_dbModelContainer" CdmEntityContainer="finance_dbEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="finance_dbModel.accounts">
+        <MappingFragment StoreEntitySet="accounts">
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="account_name" ColumnName="account_name" />
+          <ScalarProperty Name="account_type" ColumnName="account_type" />
+          <ScalarProperty Name="account_balance" ColumnName="account_balance" />
+          <ScalarProperty Name="account_description" ColumnName="account_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="budget_items">
+      <EntityTypeMapping TypeName="finance_dbModel.budget_items">
+        <MappingFragment StoreEntitySet="budget_items">
+          <ScalarProperty Name="budget_id" ColumnName="budget_id" />
+          <ScalarProperty Name="budget_name" ColumnName="budget_name" />
+          <ScalarProperty Name="budget_amount" ColumnName="budget_amount" />
+          <ScalarProperty Name="budget_category" ColumnName="budget_category" />
+          <ScalarProperty Name="budget_month" ColumnName="budget_month" />
+          <ScalarProperty Name="budget_description" ColumnName="budget_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="expenses">
+      <EntityTypeMapping TypeName="finance_dbModel.expenses">
+        <MappingFragment StoreEntitySet="expenses">
+          <ScalarProperty Name="expense_id" ColumnName="expense_id" />
+          <ScalarProperty Name="expense_name" ColumnName="expense_name" />
+          <ScalarProperty Name="expense_amount" ColumnName="expense_amount" />
+          <ScalarProperty Name="expense_date" ColumnName="expense_date" />
+          <ScalarProperty Name="expense_category" ColumnName="expense_category" />
+          <ScalarProperty Name="expense_description" ColumnName="expense_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="income">
+      <EntityTypeMapping TypeName="finance_dbModel.income">
+        <MappingFragment StoreEntitySet="income">
+          <ScalarProperty Name="income_id" ColumnName="income_id" />
+          <ScalarProperty Name="income_name" ColumnName="income_name" />
+          <ScalarProperty Name="income_amount" ColumnName="income_amount" />
+          <ScalarProperty Name="income_date" ColumnName="income_date" />
+          <ScalarProperty Name="income_category" ColumnName="income_category" />
+          <ScalarProperty Name="income_description" ColumnName="income_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="finance_dbModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tax_rates">
+      <EntityTypeMapping TypeName="finance_dbModel.tax_rates">
+        <MappingFragment StoreEntitySet="tax_rates">
+          <ScalarProperty Name="tax_id" ColumnName="tax_id" />
+          <ScalarProperty Name="tax_name" ColumnName="tax_name" />
+          <ScalarProperty Name="tax_rate" ColumnName="tax_rate" />
+          <ScalarProperty Name="tax_description" ColumnName="tax_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tax_reporting">
+      <EntityTypeMapping TypeName="finance_dbModel.tax_reporting">
+        <MappingFragment StoreEntitySet="tax_reporting">
+          <ScalarProperty Name="tax_report_id" ColumnName="tax_report_id" />
+          <ScalarProperty Name="tax_report_name" ColumnName="tax_report_name" />
+          <ScalarProperty Name="tax_report_date" ColumnName="tax_report_date" />
+          <ScalarProperty Name="tax_report_amount" ColumnName="tax_report_amount" />
+          <ScalarProperty Name="tax_id" ColumnName="tax_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transactions">
+      <EntityTypeMapping TypeName="finance_dbModel.transactions">
+        <MappingFragment StoreEntitySet="transactions">
+          <ScalarProperty Name="transaction_id" ColumnName="transaction_id" />
+          <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+          <ScalarProperty Name="transaction_amount" ColumnName="transaction_amount" />
+          <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
+          <ScalarProperty Name="transaction_description" ColumnName="transaction_description" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

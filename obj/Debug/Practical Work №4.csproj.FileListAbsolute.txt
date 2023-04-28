@@ -1,0 +1,22 @@
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\bin\Debug\Practical Work №4.exe.config
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\bin\Debug\Practical Work №4.exe
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\bin\Debug\Practical Work №4.pdb
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\bin\Debug\EntityFramework.dll
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\bin\Debug\EntityFramework.SqlServer.dll
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\bin\Debug\EntityFramework.xml
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\bin\Debug\EntityFramework.SqlServer.xml
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4.csproj.AssemblyReference.cache
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4.csproj.SuggestedBindingRedirects.cache
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\MainWindow.g.cs
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\App.g.cs
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4_Content.g.cs
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4_MarkupCompile.cache
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4_MarkupCompile.lref
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\MainWindow.baml
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4.g.resources
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical_Work__4.Properties.Resources.resources
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4.csproj.GenerateResource.cache
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4.csproj.CoreCompileInputs.cache
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4.csproj.CopyComplete
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4.exe
+D:\Visual Studio 2022\Works\Practical Work №4 (finance_db)\Practical Work №4\obj\Debug\Practical Work №4.pdb

@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище finance_dbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="accounts">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="account_id" Type="int" Nullable="false" />
+          <Property Name="account_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="account_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="account_balance" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="account_description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="budget_items">
+          <Key>
+            <PropertyRef Name="budget_id" />
+          </Key>
+          <Property Name="budget_id" Type="int" Nullable="false" />
+          <Property Name="budget_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="budget_amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="budget_category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="budget_month" Type="date" Nullable="false" />
+          <Property Name="budget_description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="expenses">
+          <Key>
+            <PropertyRef Name="expense_id" />
+          </Key>
+          <Property Name="expense_id" Type="int" Nullable="false" />
+          <Property Name="expense_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="expense_amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="expense_date" Type="date" Nullable="false" />
+          <Property Name="expense_category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="expense_description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="income">
+          <Key>
+            <PropertyRef Name="income_id" />
+          </Key>
+          <Property Name="income_id" Type="int" Nullable="false" />
+          <Property Name="income_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="income_amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="income_date" Type="date" Nullable="false" />
+          <Property Name="income_category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="income_description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tax_rates">
+          <Key>
+            <PropertyRef Name="tax_id" />
+          </Key>
+          <Property Name="tax_id" Type="int" Nullable="false" />
+          <Property Name="tax_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tax_rate" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="tax_description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tax_reporting">
+          <Key>
+            <PropertyRef Name="tax_report_id" />
+          </Key>
+          <Property Name="tax_report_id" Type="int" Nullable="false" />
+          <Property Name="tax_report_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tax_report_date" Type="date" Nullable="false" />
+          <Property Name="tax_report_amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="tax_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="transactions">
+          <Key>
+            <PropertyRef Name="transaction_id" />
+          </Key>
+          <Property Name="transaction_id" Type="int" Nullable="false" />
+          <Property Name="transaction_date" Type="date" Nullable="false" />
+          <Property Name="transaction_amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="transaction_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="transaction_description" Type="varchar" MaxLength="255" />
+          <Property Name="account_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tax_repor__tax_i__3E52440B">
+          <End Role="tax_rates" Type="Self.tax_rates" Multiplicity="1" />
+          <End Role="tax_reporting" Type="Self.tax_reporting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tax_rates">
+              <PropertyRef Name="tax_id" />
+            </Principal>
+            <Dependent Role="tax_reporting">
+              <PropertyRef Name="tax_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transacti__accou__4316F928">
+          <End Role="accounts" Type="Self.accounts" Multiplicity="1" />
+          <End Role="transactions" Type="Self.transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="accounts">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="transactions">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище finance_dbModelContainer">
+          <EntitySet Name="accounts" EntityType="Self.accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="budget_items" EntityType="Self.budget_items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="expenses" EntityType="Self.expenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="income" EntityType="Self.income" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tax_rates" EntityType="Self.tax_rates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tax_reporting" EntityType="Self.tax_reporting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transactions" EntityType="Self.transactions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tax_repor__tax_i__3E52440B" Association="Self.FK__tax_repor__tax_i__3E52440B">
+            <End Role="tax_rates" EntitySet="tax_rates" />
+            <End Role="tax_reporting" EntitySet="tax_reporting" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transacti__accou__4316F928" Association="Self.FK__transacti__accou__4316F928">
+            <End Role="accounts" EntitySet="accounts" />
+            <End Role="transactions" EntitySet="transactions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="finance_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="accounts">
+          <Key>
+            <PropertyRef Name="account_id" />
+          </Key>
+          <Property Name="account_id" Type="Int32" Nullable="false" />
+          <Property Name="account_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="account_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="account_balance" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="account_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="transactions" Relationship="Self.FK__transacti__accou__4316F928" FromRole="accounts" ToRole="transactions" />
+        </EntityType>
+        <EntityType Name="budget_items">
+          <Key>
+            <PropertyRef Name="budget_id" />
+          </Key>
+          <Property Name="budget_id" Type="Int32" Nullable="false" />
+          <Property Name="budget_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="budget_amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="budget_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="budget_month" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="budget_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="expenses">
+          <Key>
+            <PropertyRef Name="expense_id" />
+          </Key>
+          <Property Name="expense_id" Type="Int32" Nullable="false" />
+          <Property Name="expense_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="expense_amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="expense_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="expense_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="expense_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="income">
+          <Key>
+            <PropertyRef Name="income_id" />
+          </Key>
+          <Property Name="income_id" Type="Int32" Nullable="false" />
+          <Property Name="income_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="income_amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="income_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="income_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="income_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tax_rates">
+          <Key>
+            <PropertyRef Name="tax_id" />
+          </Key>
+          <Property Name="tax_id" Type="Int32" Nullable="false" />
+          <Property Name="tax_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_rate" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="tax_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tax_reporting" Relationship="Self.FK__tax_repor__tax_i__3E52440B" FromRole="tax_rates" ToRole="tax_reporting" />
+        </EntityType>
+        <EntityType Name="tax_reporting">
+          <Key>
+            <PropertyRef Name="tax_report_id" />
+          </Key>
+          <Property Name="tax_report_id" Type="Int32" Nullable="false" />
+          <Property Name="tax_report_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_report_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="tax_report_amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="tax_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tax_rates" Relationship="Self.FK__tax_repor__tax_i__3E52440B" FromRole="tax_reporting" ToRole="tax_rates" />
+        </EntityType>
+        <EntityType Name="transactions">
+          <Key>
+            <PropertyRef Name="transaction_id" />
+          </Key>
+          <Property Name="transaction_id" Type="Int32" Nullable="false" />
+          <Property Name="transaction_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="transaction_amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="transaction_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="transaction_description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="account_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="accounts" Relationship="Self.FK__transacti__accou__4316F928" FromRole="transactions" ToRole="accounts" />
+        </EntityType>
+        <Association Name="FK__transacti__accou__4316F928">
+          <End Role="accounts" Type="Self.accounts" Multiplicity="1" />
+          <End Role="transactions" Type="Self.transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="accounts">
+              <PropertyRef Name="account_id" />
+            </Principal>
+            <Dependent Role="transactions">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tax_repor__tax_i__3E52440B">
+          <End Role="tax_rates" Type="Self.tax_rates" Multiplicity="1" />
+          <End Role="tax_reporting" Type="Self.tax_reporting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tax_rates">
+              <PropertyRef Name="tax_id" />
+            </Principal>
+            <Dependent Role="tax_reporting">
+              <PropertyRef Name="tax_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="finance_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="accounts" EntityType="Self.accounts" />
+          <EntitySet Name="budget_items" EntityType="Self.budget_items" />
+          <EntitySet Name="expenses" EntityType="Self.expenses" />
+          <EntitySet Name="income" EntityType="Self.income" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tax_rates" EntityType="Self.tax_rates" />
+          <EntitySet Name="tax_reporting" EntityType="Self.tax_reporting" />
+          <EntitySet Name="transactions" EntityType="Self.transactions" />
+          <AssociationSet Name="FK__transacti__accou__4316F928" Association="Self.FK__transacti__accou__4316F928">
+            <End Role="accounts" EntitySet="accounts" />
+            <End Role="transactions" EntitySet="transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tax_repor__tax_i__3E52440B" Association="Self.FK__tax_repor__tax_i__3E52440B">
+            <End Role="tax_rates" EntitySet="tax_rates" />
+            <End Role="tax_reporting" EntitySet="tax_reporting" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище finance_dbModelContainer" CdmEntityContainer="finance_dbEntities">
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="finance_dbModel.accounts">
+              <MappingFragment StoreEntitySet="accounts">
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+                <ScalarProperty Name="account_name" ColumnName="account_name" />
+                <ScalarProperty Name="account_type" ColumnName="account_type" />
+                <ScalarProperty Name="account_balance" ColumnName="account_balance" />
+                <ScalarProperty Name="account_description" ColumnName="account_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="budget_items">
+            <EntityTypeMapping TypeName="finance_dbModel.budget_items">
+              <MappingFragment StoreEntitySet="budget_items">
+                <ScalarProperty Name="budget_id" ColumnName="budget_id" />
+                <ScalarProperty Name="budget_name" ColumnName="budget_name" />
+                <ScalarProperty Name="budget_amount" ColumnName="budget_amount" />
+                <ScalarProperty Name="budget_category" ColumnName="budget_category" />
+                <ScalarProperty Name="budget_month" ColumnName="budget_month" />
+                <ScalarProperty Name="budget_description" ColumnName="budget_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="expenses">
+            <EntityTypeMapping TypeName="finance_dbModel.expenses">
+              <MappingFragment StoreEntitySet="expenses">
+                <ScalarProperty Name="expense_id" ColumnName="expense_id" />
+                <ScalarProperty Name="expense_name" ColumnName="expense_name" />
+                <ScalarProperty Name="expense_amount" ColumnName="expense_amount" />
+                <ScalarProperty Name="expense_date" ColumnName="expense_date" />
+                <ScalarProperty Name="expense_category" ColumnName="expense_category" />
+                <ScalarProperty Name="expense_description" ColumnName="expense_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="income">
+            <EntityTypeMapping TypeName="finance_dbModel.income">
+              <MappingFragment StoreEntitySet="income">
+                <ScalarProperty Name="income_id" ColumnName="income_id" />
+                <ScalarProperty Name="income_name" ColumnName="income_name" />
+                <ScalarProperty Name="income_amount" ColumnName="income_amount" />
+                <ScalarProperty Name="income_date" ColumnName="income_date" />
+                <ScalarProperty Name="income_category" ColumnName="income_category" />
+                <ScalarProperty Name="income_description" ColumnName="income_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="finance_dbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tax_rates">
+            <EntityTypeMapping TypeName="finance_dbModel.tax_rates">
+              <MappingFragment StoreEntitySet="tax_rates">
+                <ScalarProperty Name="tax_id" ColumnName="tax_id" />
+                <ScalarProperty Name="tax_name" ColumnName="tax_name" />
+                <ScalarProperty Name="tax_rate" ColumnName="tax_rate" />
+                <ScalarProperty Name="tax_description" ColumnName="tax_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tax_reporting">
+            <EntityTypeMapping TypeName="finance_dbModel.tax_reporting">
+              <MappingFragment StoreEntitySet="tax_reporting">
+                <ScalarProperty Name="tax_report_id" ColumnName="tax_report_id" />
+                <ScalarProperty Name="tax_report_name" ColumnName="tax_report_name" />
+                <ScalarProperty Name="tax_report_date" ColumnName="tax_report_date" />
+                <ScalarProperty Name="tax_report_amount" ColumnName="tax_report_amount" />
+                <ScalarProperty Name="tax_id" ColumnName="tax_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transactions">
+            <EntityTypeMapping TypeName="finance_dbModel.transactions">
+              <MappingFragment StoreEntitySet="transactions">
+                <ScalarProperty Name="transaction_id" ColumnName="transaction_id" />
+                <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+                <ScalarProperty Name="transaction_amount" ColumnName="transaction_amount" />
+                <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
+                <ScalarProperty Name="transaction_description" ColumnName="transaction_description" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

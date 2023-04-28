@@ -1,0 +1,30 @@
+﻿<Window x:Class="Practical_Work__4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practical_Work__4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="474" Width="800">
+    <Grid>
+        <DataGrid Name="FinanceDataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,52,10,136"/>
+        <ToolBar HorizontalAlignment="Center" Height="35" VerticalAlignment="Top" Width="780">
+            <ComboBox Name="comboBox" Width="150" Height="26" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left">
+                <ComboBoxItem Content="accounts"/>
+                <ComboBoxItem Content="budget_items"/>
+                <ComboBoxItem Content="expenses"/>
+                <ComboBoxItem Content="income"/>
+                <ComboBoxItem Content="tax_rates"/>
+                <ComboBoxItem Content="tax_reporting"/>
+                <ComboBoxItem Content="transactions"/>
+            </ComboBox>
+            <Button Name="Add" Content="Add" Width="50" Height="30" VerticalAlignment="Top" Click="AddClick" Background="#FFFF6C6C"/>
+            <Button Name="Delete" Content="Delete" Width="50" Height="30" VerticalAlignment="Top" Click="DeleteClick" Background="#FFFF6C6C"/>
+            <Button Name="Update" Content="Update" Width="50" Height="30" VerticalAlignment="Top" Click="UpdateClick" Background="#FFFF6C6C"/>
+            <Button Name="Save" Content="Save" Width="50" Height="30" VerticalAlignment="Top" Click="SaveClick" Background="#FFFF6C6C"/>
+        </ToolBar>
+        <TextBox Name="textBox" HorizontalAlignment="Center" Margin="0,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="780" Height="94" BorderBrush="Black"/>
+
+
+    </Grid>
+</Window>
